@@ -87,9 +87,65 @@ BigStride 表示一个预先定义的大常数，则该调度方案为每个进�
 
   从本章开始，你的内核必须前向兼容，能通过前一章的所有测例。
 
+- 开发并通过所有测例
+
+在 ``YOUR_LAB3_REPO_DIR`` 下进行编码（可学习参考 ``os5-ref/src`` 目录下的源代码，并在 ``os5/src`` 中完成编码），并进行编译测试。
+
 .. note::
 
-    利用 ``git cherry-pick`` 系列指令，能方便地将前一章分支 commit 移植到本章分支。
+   **测试方式**
+
+   你的实现只需且必须通过测例，建议读者感到困惑时先检查测例
+   
+   如果实现正确，可在项目仓库的根目录下执行 ``make test5`` ，应该看到类似如下的显示输出：
+
+   .. code-block:: console
+   
+      $ cd  YOUR_LAB3_REPO_DIR
+      $ make test5
+      ......
+      [rustsbi] RustSBI version 0.2.2, adapting to RISC-V SBI v1.0.0
+      .______       __    __      _______.___________.  _______..______   __
+      |   _  \     |  |  |  |    /       |           | /       ||   _  \ |  |
+      |  |_)  |    |  |  |  |   |   (----`---|  |----`|   (----`|  |_)  ||  |
+      |      /     |  |  |  |    \   \       |  |      \   \    |   _  < |  |
+      |  |\  \----.|  `--'  |.----)   |      |  |  .----)   |   |  |_)  ||  |
+      | _| `._____| \______/ |_______/       |__|  |_______/    |______/ |__|
+      [rustsbi] Implementation     : RustSBI-QEMU Version 0.1.1
+      [rustsbi] Platform Name      : riscv-virtio,qemu
+      [rustsbi] Platform SMP       : 1
+      [rustsbi] Platform Memory    : 0x80000000..0x88000000
+      [rustsbi] Boot HART          : 0
+      [rustsbi] Device Tree Region : 0x87000000..0x87000ef2
+      [rustsbi] Firmware Address   : 0x80000000
+      [rustsbi] Supervisor Address : 0x80200000
+      [rustsbi] pmp01: 0x00000000..0x80000000 (-wr)
+      [rustsbi] pmp02: 0x80000000..0x80200000 (---)
+      [rustsbi] pmp03: 0x80200000..0x88000000 (xwr)
+      ......
+      [PASS] found <current time_msec = (\d+)>
+      [PASS] found <Test wait OK42266!>
+      [PASS] found <time_msec = (\d+) after sleeping (\d+) ticks, delta = (\d+)ms!>
+      [PASS] found <Test 04_4 test OK42266!>
+      [PASS] found <Test 04_6 ummap2 OK42266!>
+     ......
+      [PASS] found <Test set_priority OK42266!>
+      [PASS] found <Test write B OK42266!>
+      [PASS] not found <FAIL: T.T>
+      [PASS] not found <Should cause error, Test 04_2 fail!>
+      [PASS] not found <Should cause error, Test 04_3 fail!>
+
+      Test passed42266: 24/24
+
+      stride ratio = [15202320, 13745266, 13849200, 12149100, 10944222, 9782240]
+      [PASS] Stride Test
+
+      Test passed42266: 1/1
+
+- 提交你的修改
+  
+   - 如果是基于GitHub Classroom 开发, 在本地环境或在线codespaces环境下，执行 ``git push`` 命令，提交修改的代码到gitub进行CI自动评测。如果评测结果是 红色小叉 （位于repo的中上位置），可进一步点击红色小叉查找具体出错时的CI执行情况。 
+
 
 问答作业
 --------------------------------------------

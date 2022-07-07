@@ -1,18 +1,23 @@
-![Open in Codespaces](https://classroom.github.com/assets/open-in-codespaces-abfff4d4e15f9e1bd8274d9a39a0befe03a0632bb0f153d0ec72ff541cedbe34.svg)
 # Open-Source OS Training Comp 2022
 
 Welcome to Open-Source OS Training Comp 2022（2022年开源操作系统训练营）.
 ## Scheduling
 - NOTICE current [**SCHEDULING**](./scheduling.md)（2022年开源操作系统训练营的计划安排）!
+- [News](./news.md)（2022年开源操作系统训练营的新闻和纪要）
 ## History
 - [open-source  os training comp 2021](https://github.com/rcore-os/rCore/wiki/os-tutorial-summer-of-code-2021)
 - [open-source  os training  comp 2020](https://github.com/rcore-os/rCore/wiki/os-tutorial-summer-of-code-2020)
-## Guide
+
+## Guide & Lab Test for Rust
+- [learning rust guide](https://course.rs/)（Rust语言圣经）
+- [Rust-lang Lab Test based on Rustlings](https://classroom.github.com/a/YTNg1dEH)（采用Github Classroom模式的Rustling小练习）
+## Guide for OS
 - Guide deployed version can be found [here](https://learningos.github.io/rust-based-os-comp2022/)（精简OS实验指导）
 - [rCore Tutorial v3 Guide](https://rcore-os.github.io/rCore-Tutorial-Book-v3/) (2022春季OS课程讲义)
 - [OS Course Slides in 2022 spring](https://learningos.github.io/os-lectures/)(2022春季OS课程Slides)
 - [OS Course Videos in 2022 spring](./relatedinfo.md)(2022春季OS课程Videos)
-
+- [OS API Docs in 2022 spring](./relatedinfo.md)(2022春季OS课程实验中 ``cargo doc`` 生成的各章参考OS的API文档)
+ 
 First, you can read [Guide](https://learningos.github.io/rust-based-os-comp2022/) to:
 - (Important) `git clone` this repo.
 - (Important) setup development environment.
@@ -46,5 +51,8 @@ According to the  [Guide](https://learningos.github.io/rust-based-os-comp2022/),
 - lab4: `make test6`  &&  `make test7` for lab4 
 - lab5: `make test8`  for lab5 
 
-## Send issues
-If  you meet any problems or some difficulties, please send issues to [Issues in rust-based-os-comp2022](https://github.com/LearningOS/rust-based-os-comp2022/issues)
+## QA &Send issues
+
+There are some methods for common questions & problems, please read [QA](./QA.md).
+
+If  you meet any other new problems or some difficulties, please send issues to [Issues in rust-based-os-comp2022](https://github.com/LearningOS/rust-based-os-comp2022/issues)
