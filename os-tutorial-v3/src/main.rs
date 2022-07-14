@@ -1,11 +1,13 @@
 #![no_std]
 #![no_main]
+#![feature(panic_info_message)]
 
 use core::arch::global_asm;
-use crate::sbi::{console_putchar, shutdown};
+use crate::sbi::{shutdown};
 
 mod sbi;
 mod lang_items;
+mod console;
 
 global_asm!(include_str!("entry.asm"));
 
@@ -13,11 +15,9 @@ global_asm!(include_str!("entry.asm"));
 pub fn rust_main() -> ! {
     clear_bss(); // clear all bss segment to init kernel
 
-    for c in "OK\n".bytes() {
-        console_putchar(c as usize);
-    }
+    println!("Hello, world!");
 
-    shutdown()
+    panic!("Shutdown machine!");
 }
 
 fn clear_bss() {
