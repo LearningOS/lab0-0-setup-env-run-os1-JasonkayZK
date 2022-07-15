@@ -1,3 +1,5 @@
+export LOG=TRACE
+
 # build code
 cargo build --release
 
