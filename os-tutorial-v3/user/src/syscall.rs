@@ -12,28 +12,37 @@ const SBI_REMOTE_FENCE_I: usize = 5;
 const SBI_REMOTE_SFENCE_VMA: usize = 6;
 const SBI_REMOTE_SFENCE_VMA_ASID: usize = 7;
 const SBI_SHUTDOWN: usize = 8;
+const SYSCALL_WRITE: usize = 64;
+const SYSCALL_EXIT: usize = 93;
 
-#[inline(always)]
-fn sbi_call(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
-    let mut ret;
+fn syscall(id: usize, args: [usize; 3]) -> isize {
+    let mut ret: isize;
     unsafe {
         asm!(
         "ecall",
-        inlateout("x10") arg0 => ret,
-        in("x11") arg1,
-        in("x12") arg2,
-        in("x17") which,
+        inlateout("x10") args[0] => ret,
+        in("x11") args[1],
+        in("x12") args[2],
+        in("x17") id
         );
     }
     ret
 }
 
+pub fn sys_write(fd: usize, buffer: &[u8]) -> isize {
+    syscall(SYSCALL_WRITE, [fd, buffer.as_ptr() as usize, buffer.len()])
+}
+
+pub fn sys_exit(exit_code: i32) -> isize {
+    syscall(SYSCALL_EXIT, [exit_code as usize, 0, 0])
+}
+
 /// use sbi call to putchar in console (qemu uart handler)
 pub fn console_putchar(c: usize) {
-    sbi_call(SBI_CONSOLE_PUTCHAR, c, 0, 0);
+    syscall(SBI_CONSOLE_PUTCHAR, [c, 0, 0]);
 }
 
 pub fn shutdown() -> ! {
-    sbi_call(SBI_SHUTDOWN, 0, 0, 0);
+    syscall(SBI_SHUTDOWN, [0, 0, 0]);
     panic!("It should shutdown!");
 }

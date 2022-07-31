@@ -1,6 +1,6 @@
 use core::panic::PanicInfo;
-use crate::{println, shutdown};
 use crate::stack_trace::print_stack_trace;
+use crate::syscall::shutdown;
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
