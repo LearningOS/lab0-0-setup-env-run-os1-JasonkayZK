@@ -19,18 +19,18 @@
 #![feature(panic_info_message)]
 
 use core::arch::global_asm;
-use log::{debug, error, info, trace, warn};
+use log::{info};
 use crate::sbi::{shutdown};
 
-// #[cfg(feature = "board_qemu")]
-// #[path = "boards/qemu.rs"]
-// mod board;
+#[cfg(feature = "board_qemu")]
+#[path = "boards/qemu.rs"]
+mod board;
 
 #[macro_use]
-// pub mod batch;
-// pub mod syscall;
-// pub mod trap;
-// mod sync;
+pub mod batch;
+pub mod syscall;
+pub mod trap;
+mod sync;
 mod console;
 mod lang_items;
 mod sbi;
@@ -59,30 +59,12 @@ fn clear_bss() {
 }
 
 #[no_mangle]
-pub fn main() -> ! {
-    extern "C" {
-        fn stext();
-        fn etext();
-        fn srodata();
-        fn erodata();
-        fn sdata();
-        fn edata();
-        fn sbss();
-        fn ebss();
-        fn boot_stack();
-        fn boot_stack_top();
-    }
+pub fn rust_main() -> ! {
     clear_bss(); // clear all bss segment to init kernel
-
     logger::init();
-    println!("Hello, world!");
-    trace!(".text [{:#x}, {:#x})", stext as usize, etext as usize);
-    debug!(".rodata [{:#x}, {:#x})", srodata as usize, erodata as usize);
-    info!(".data [{:#x}, {:#x})", sdata as usize, edata as usize);
-    warn!(
-        "boot_stack [{:#x}, {:#x})",
-        boot_stack as usize, boot_stack_top as usize
-    );
-    error!(".bss [{:#x}, {:#x})", sbss as usize, ebss as usize);
-    panic!("Shutdown machine!");
+
+    info!("[kernel] Hello, world!");
+    trap::init();
+    batch::init();
+    batch::run_next_app();
 }
