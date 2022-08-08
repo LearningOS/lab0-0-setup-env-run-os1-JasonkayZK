@@ -14,6 +14,7 @@ const SBI_REMOTE_SFENCE_VMA_ASID: usize = 7;
 const SBI_SHUTDOWN: usize = 8;
 const SYSCALL_WRITE: usize = 64;
 const SYSCALL_EXIT: usize = 93;
+const SYSCALL_YIELD: usize = 124;
 
 fn syscall(id: usize, args: [usize; 3]) -> isize {
     let mut ret: isize;
@@ -37,12 +38,16 @@ pub fn sys_exit(exit_code: i32) -> isize {
     syscall(SYSCALL_EXIT, [exit_code as usize, 0, 0])
 }
 
-/// use sbi call to putchar in console (qemu uart handler)
-pub fn console_putchar(c: usize) {
-    syscall(SBI_CONSOLE_PUTCHAR, [c, 0, 0]);
-}
-
 pub fn shutdown() -> ! {
     syscall(SBI_SHUTDOWN, [0, 0, 0]);
     panic!("It should shutdown!");
+}
+
+pub fn sys_yield() -> isize {
+    syscall(SYSCALL_YIELD, [0, 0, 0])
+}
+
+/// use sbi call to putchar in console (qemu uart handler)
+pub fn console_putchar(c: usize) {
+    syscall(SBI_CONSOLE_PUTCHAR, [c, 0, 0]);
 }

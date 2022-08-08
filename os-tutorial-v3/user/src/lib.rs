@@ -17,6 +17,8 @@ pub fn exit(exit_code: i32) -> isize {
     syscall::sys_exit(exit_code)
 }
 
+pub fn yield_() -> isize { syscall::sys_yield() }
+
 // The real entry for main
 #[no_mangle]
 #[link_section = ".text.entry"]
