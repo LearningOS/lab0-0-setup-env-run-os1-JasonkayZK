@@ -27,9 +27,11 @@ use crate::sbi::{shutdown};
 mod board;
 
 #[macro_use]
-pub mod batch;
+pub mod config;
+pub mod loader;
 pub mod syscall;
 pub mod trap;
+pub mod task;
 mod sync;
 mod console;
 mod lang_items;
@@ -44,10 +46,12 @@ global_asm!(include_str!("link_app.S"));
 
 /// clear BSS segment
 fn clear_bss() {
+    // linker.ld provided
     extern "C" {
-        // linker.ld provided
-        fn sbss(); // start of bss address
-    fn ebss(); // end of bss address
+        // start of bss address
+        fn sbss();
+        // end of bss address
+        fn ebss();
     }
 
     // clear all bss segment
@@ -65,6 +69,7 @@ pub fn rust_main() -> ! {
 
     info!("[kernel] Hello, world!");
     trap::init();
-    batch::init();
-    batch::run_next_app();
+    loader::load_apps();
+    task::run_first_task();
+    panic!("Unreachable in rust_main!");
 }
