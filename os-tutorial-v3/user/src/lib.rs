@@ -2,6 +2,8 @@
 #![feature(linkage)]
 #![feature(panic_info_message)]
 
+use crate::syscall::sys_get_time;
+
 #[macro_use]
 pub mod console;
 pub mod logger;
@@ -18,6 +20,10 @@ pub fn exit(exit_code: i32) -> isize {
 }
 
 pub fn yield_() -> isize { syscall::sys_yield() }
+
+pub fn get_time() -> isize {
+    sys_get_time()
+}
 
 // The real entry for main
 #[no_mangle]
