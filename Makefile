@@ -1,6 +1,6 @@
-DOCKER_NAME ?= dinghao188/rcore-tutorial
+DOCKER_NAME ?= rust-os-camp-2022
 DIR := workplace
-.PHONY: docker build_docker
+.PHONY: start_docker into_docker build_docker
 
 
 test: test3 test4 test5 test6 test7 test8
@@ -62,8 +62,11 @@ test8: setup
 clean:
 	rm -rf ${DIR}
 
-docker:
-	docker run --rm -it --mount type=bind,source=$(shell pwd),destination=/mnt ${DOCKER_NAME}
+start_docker:
+	docker run -itd --name my-${DOCKER_NAME} -v ${PWD}:/mnt -w /mnt ${DOCKER_NAME} bash
+
+into_docker:
+	docker exec -it my-${DOCKER_NAME} bash
 
 build_docker: 
 	docker build -t ${DOCKER_NAME} .

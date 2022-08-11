@@ -25,4 +25,27 @@
 - [20220004 rcore-tutorial-v3 lab4](https://cloud.tsinghua.edu.cn/f/a44d31de255047ceb1fc/)
 - [20220005 rcore-tutorial-v3 lab5](https://cloud.tsinghua.edu.cn/f/7935a70766514c2ca08c/)
 
-注：请联系助教了解访问方式
+
+## 2022春季OS课实验框架OS API DOC
+
+注：下面各章 ``[345678]`` 的源码与 本repo中的 ``os[345678]-ref/src`` 目录下的源码是相同的。
+### OS API docs of rCore Tutorial Code 2022S
+- [OS API docs of ch3 ](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch3/os/index.html)
+- [OS API docs of ch4](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch4/os/index.html)
+- [OS API docs of ch5](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch5/os/index.html)
+- [OS API docs of ch6](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch6/os/index.html)
+   - [easyFS API doc in ch6]( https://learningos.github.io/rCore-Tutorial-Code-2022S/ch6/easy_fs/index.html) 
+- [OS API docs of ch7](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch8/os/index.html)
+- [OS API docs of ch8](https://learningos.github.io/rCore-Tutorial-Code-2022S/ch8/os/index.html)
+
+## rcore tutorial和rustlings视频讲解
+
+- [rustlings & OS lab0-0 搭建环境和初始开发过程](https://www.bilibili.com/video/BV1fY4y1n7up?share_source=copy_web)
+
+
+## 20220705"开源操作系统学习训练营开幕式" 相关slides
+
+- [2022年开源操作系统学习训练营安排：向勇](https://github.com/LearningOS/resrouce-on-rust-based-os-comp2022/blob/main/20220705-%E5%90%91%E5%8B%87-%E5%BC%80%E5%B9%95%E5%BC%8F%E4%B8%8A%E7%9A%84%E4%BB%8B%E7%BB%8D-v4.pdf)
+- [Rust学习与领域应用：张汉东](https://github.com/LearningOS/resrouce-on-rust-based-os-comp2022/blob/main/20220705-%E5%BC%A0%E6%B1%89%E4%B8%9C-Rust%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%A2%86%E5%9F%9F%E5%BA%94%E7%94%A8.pptx)
+
+**注：如访问上述网址碰到问题，请联系助教了解访问方式**

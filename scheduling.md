@@ -1,6 +1,10 @@
 
 ## 2022年开源操作系统训练营：第一阶段
 
+- [新闻与纪要](./news.md)
+- [常见问题解答](./QA.md)
+
+
 欢迎在校学生在2022年暑假参加清华大学、CSDN、毛豆教育等共同举办的**2022年开源操作系统训练营**活动（7月1日～9月10日），本次活动分为两个阶段：线上自学OS基础[基于Rust语言学习和实践操作系统内核](https://github.com/LearningOS/rust-based-os-comp2022)（7月1日～7月31日）和线上实践OS拓展[基于Rust语言的操作系统内核拓展实践](https://github.com/LearningOS/rust-based-os-comp2022/blob/main/stage2-sched.md)（8月1日～9月10日） ,主要是对用**Rust语言进行OS研发开展学习、交流与探索**。
 
 如有兴趣参加，请在2022年7月5日前上传个人简历到清华云盘“简历收件箱[CV-inbox](https://cloud.tsinghua.edu.cn/u/d/3c62302864fd4ff090a1/)”，并填写[2022年开源操作系统训练营报名表](http://oscourse2019.mikecrm.com/yKVchGm)，获得邀请后，将开始参与本次训练营活动。完成本次活动第一阶段（7月1日～7月31日）的同学如果通过review，将可在8月1日~9月10日，开展第二阶段[基于Rust语言的操作系统内核拓展实践](https://rcore-os.github.io/rCore-Tutorial-Book-v3/final-lab.html)。训练营结束后，部分表现突出的同学将获得训练营优秀证书。鼓励同学继续以开源社区的方式参与rCore/zCore等相关的活动。
@@ -34,9 +38,13 @@
 #### 总体学习要求和成绩考核方式
 
 - 在[学习实践过程记录表](https://github.com/LearningOS/rust-based-os-comp2022/issues/1)上登记自己每日/周学习记录情况的repo网址，并在这个repo上记录每日/周学习记录情况  (成绩分数：20%)
+   - [学习记录的标杆1](https://github.com/LearningOS/record)，浙江大学本科生徐文浩的2020开源操作系统训练营的过程记录，是大家学习的榜样，供大家学习参考。
+   - [学习记录的标杆2](https://kiprey.github.io/tags/uCore/)：湖南大学本科生肖政杭的自学ucore for x86的过程记录，是大家学习的榜样，供大家学习参考。
+
 - 在[第一阶段学习issues](https://github.com/LearningOS/rust-based-os-comp2022/issues/)上的提问和回答问题情况，在[第一阶段OS学习项目](https://github.com/LearningOS/rust-based-os-comp2022/) 、 [rCore Tutorial v3的详细实验指导内容](https://rcore-os.github.io/rCore-Tutorial-Book-v3/) 上的Pull Request提交情况（代码改进、文档改进、文档错误等） (成绩分数：15%)
-- step 0 要求的编程代码的完成情况 (成绩分数：15%)
-- step 2 [第一阶段OS学习的5个实验][https://github.com/LearningOS/rust-based-os-comp2022#kernel-labs]的完成情况 (成绩分数：50%)
+- step 0 要求的[Rust-lang Lab Test based on Rustlings（采用Github Classroom模式的Rustling小练习）](https://classroom.github.com/a/YTNg1dEH) 的完成情况 (成绩分数：15%)
+- step 2 [第一阶段OS学习的5个实验](https://github.com/LearningOS/rust-based-os-comp2022#kernel-labs)的完成情况和总结报告 (成绩分数：50%)
+   - [第一阶段总结报告的参考](https://rcore-os.github.io/blog/2021/07/29/rcore-summary-yangpan/): 杨攀同学的2021年开源操作系统训练营第一阶段总结报告
 
 #### step 0 自学rust编程（大约7~14天）
 
@@ -45,15 +53,40 @@
 1. 自学：[阅读书籍/课程/视频等资源汇总](https://github.com/rcore-os/rCore/wiki/study-resource-of-system-programming-in-RUST)
 
    - 推荐：[Rust语言圣经(Rust教程 Rust Course和配套练习)](https://course.rs/)
+   - 推荐：[Rust速查表（cheatsheet）](https://cheats.rs/) 该项目不仅提供了基础的语法速查，还有执行顺序详解和编写时需要关注的注意事项。项目还包含了示例代码（EX）、书籍（BK）、标准（STD）等相关资料的扩展。
 
 2. 自学编程
 
-   - [Small exercises to get you used to reading and writing Rust code!](https://github.com/rust-lang/rustlings)
-     - 要求：小练习全部通过。代码和README提交在自己在github的公开repo上。
-   - [32 Rust Quizes](https://dtolnay.github.io/rust-quiz/1)
-     - 要求：小练习全部通过。
-   - [exercisms.io 快速练习(88+道题目的中文详细描述)](http://llever.com/exercism-rust-zh/index.html)
-     - 要求：大部分练习会做或能读懂。
+   - [Rust-lang Lab Test based on Rustlings](https://classroom.github.com/a/YTNg1dEH)（采用Github Classroom模式的Rustling小练习，点击上述链接，形成自己的练习用repo） 
+     - 要求：**必须完成** 。每完成几个小练习，就执行 ``git add; git commit -m"update"; git push`` 命令，把更新提交到GithubClassroom的CI进行自动评测。要求小练习全部通过GithubClassroom的CI自动评测。
+     - [学习系列视频：Rust中文社群线上学习室--通过 Rustlings 学 Rust](https://space.bilibili.com/24917186/video) 
+        
+          **提示：基于github classroom的开发方式**
+            
+          基于github classroom，可方便建立开发用的git repository，并可基于github的 codespace （在线版ubuntu +vscode）在线开发使用。整个开发环境仅仅需要一个网络浏览器。
+
+          1.） 在网络浏览器中用自己的 github  id 登录 github.com
+
+          2.） 接收 [Rust-lang Lab Test based on Rustlings 的github classroom在线邀请](https://classroom.github.com/a/YTNg1dEH)  ，根据提示一路选择OK即可。
+          
+          3.） 完成第二步后，你的rustings实验练习 的 github repository 会被自动建立好，点击此github repository的链接，就可看到你要完成的实验了。
+          
+          4.） 在你的第一个实验练习的网页的中上部可以看到一个醒目的 `code`  绿色按钮，点击后，可以进一步看到  `codespace` 标签和醒目的 `create codesapce on main` 绿色按钮。请点击这个绿色按钮，就可以进入到在线的ubuntu +vscode环境中
+          
+          5.） 再按照下面的环境安装提示在vscode的 `console` 中安装配置开发环境：rustc等工具。注：也可在vscode的 `console` 中执行 ``make codespaces_setenv`` 来自动安装配置开发环境（执行``sudo``需要root权限，仅需要执行一次）。
+          
+          6.） 在vscode的 `console` 中执行 `make setupclassroom`  （该命令仅执行一次）配置githubclassroom 自动评分功能。
+          
+          7.） 然后就可以基于在线vscode进行测试 (执行命令 `rustlings watch` ），编辑代码的循环实验过程了。
+
+          上述的3，4，5步不是必须的，你也可以线下本地开发。
+
+          注：如果是本地的ubuntu中建立开发环境，可在shell中执行 ``make ubuntu_local_setenv`` 来自动安装配置开发环境（执行``sudo``需要root权限，仅需要执行一次）。
+
+   - （Option）[32 Rust Quizes](https://dtolnay.github.io/rust-quiz/1)
+     - 要求：小练习全部通过。（**非必须完成**）
+   - （Option）[exercisms.io 快速练习(88+道题目的中文详细描述)](http://llever.com/exercism-rust-zh/index.html)
+     - 要求：大部分练习会做或能读懂。（**非必须完成**）
      - [exercism.io官方站点](https://exercism.io/)
 
 
@@ -66,13 +99,17 @@
 ###### 自学材料和练习要求: 
 1. 阅读书籍和在线课程
  - 自学[PPT for RISC-V特权指令级架构](https://content.riscv.org/wp-content/uploads/2018/05/riscv-privileged-BCN.v7-2.pdf)
- - 自学[RISC-V手册：一本开源指令集的指南](http://crva.io/documents/RISC-V-Reader-Chinese-v2p1.pdf) 重点是第10章
- - 自学[RIS-V特权指令级规范](https://riscv.org/specifications/privileged-isa/) 重点是与OS相关的特权硬件访问的内容
- - [计算机组成与设计：RISC-V 教材](https://item.jd.com/12887758.html) 这是完整的课程教材，不要求全部看完，请根据自己的需求选择。
- - [计算机组成与设计：RISC-V 浙大在线课程](http://www.icourse163.org/course/ZJU-1452997167) 这是完整的一门课，不要求全部看完，请根据自己的需求选择。
+ - 自学[RISC-V手册：一本开源指令集的指南](http://riscvbook.com/chinese/RISC-V-Reader-Chinese-v2p1.pdf) 重点是第10章
+ - （Option）自学[RIS-V特权指令级规范](https://riscv.org/technical/specifications/) 重点是与OS相关的特权硬件访问的规范内容（Privileged Spec）
+ - （Option）自学[RISC-V汇编手册](https://github.com/riscv-non-isa/riscv-asm-manual/blob/master/riscv-asm.md)
+ - （Option）[计算机组成与设计：RISC-V 教材](https://item.jd.com/12887758.html) 这是完整的课程教材，不要求全部看完，请根据自己的需求选择。
+ - （Option）[计算机组成与设计：RISC-V 浙大在线课程](http://www.icourse163.org/course/ZJU-1452997167) 这是完整的一门课，不要求全部看完，请根据自己的需求选择。
 
 2. 其他参考学习信息
- - [Berkeley CS61C: Great Ideas in Computer Architecture (Machine Structures)](http://www-inst.eecs.berkeley.edu/~cs61c/sp18/)
+ - （Option）[Berkeley CS61C: Great Ideas in Computer Architecture (Machine Structures)](http://www-inst.eecs.berkeley.edu/~cs61c/sp18/)
+
+
+注：Option的含义是：如果有足够的时间建议看看，否则在后续要用到时或需要查询进一步信息时再查阅这些内容。
 
 3. 通过要求
 
@@ -87,14 +124,16 @@
 - [rCore Tutorial v3的详细实验指导内容](https://rcore-os.github.io/rCore-Tutorial-Book-v3/)
 - [rCore Tutorial v3的实验代码](https://github.com/rcore-os/rCore-Tutorial-v3)
 - [2022年春季OS课程讲解和OS实验讲解](./relatedinfo.md)
-  
+- [2022年春季OS课程实验中 ``cargo doc`` 生成的各章参考OS的API文档](./relatedinfo.md)
+
 ##### 具备步骤
 
-根据[rust-based-os-comp2022](https://github.com/LearningOS/rust-based-os-comp2022)中的各个实验的具体实验要求在自己的仓库中完成5个实验，并通过基于GitHub Classroom的CI测试。
+根据[rust-based-os-comp2022](https://github.com/LearningOS/rust-based-os-comp2022)中的各个实验的具体实验要求在自己的仓库中完成5个实验，通过基于GitHub Classroom的CI测试，并在最后写出总结报告。
+
 
 具体步骤
 - 登录github.com
-- 访问(训练营 kernel labs)[https://github.com/LearningOS/rust-based-os-comp2022#kernel-labs]，点击如下链接，形成各个自己实验专用 repos：
+- 访问 [训练营 kernel labs](https://github.com/LearningOS/rust-based-os-comp2022#kernel-labs) ，点击如下链接，形成各个自己实验专用 repos：
 
     - [lab0-0实践](https://classroom.github.com/a/hnoWuKGF) 
     - [lab0-1实践](https://classroom.github.com/a/UEOvz4qO)
@@ -155,4 +194,5 @@
 - 启元实验室
 - 阿里云
 - 华为
+- 101计划操作系统课程虚拟教研室
 
