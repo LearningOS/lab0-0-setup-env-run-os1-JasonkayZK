@@ -4,6 +4,7 @@
 //! important ones are:
 //!
 //! - [`trap`]: Handles all cases of switching from userspace to the kernel
+//! - [`task`]: Task management
 //! - [`syscall`]: System call handling and implementation
 //!
 //! The operating system also starts in this module. Kernel code starts
@@ -11,7 +12,7 @@
 //! initialize various pieces of functionality. (See its source code for
 //! details.)
 //!
-//! We then call [`batch::run_next_app()`] and for the first time go to
+//! We then call [`task::run_first_task()`] and for the first time go to
 //! userspace.
 
 #![no_std]
@@ -19,7 +20,7 @@
 #![feature(panic_info_message)]
 
 use core::arch::global_asm;
-use log::{info};
+use log::{debug};
 use crate::sbi::{shutdown};
 
 #[cfg(feature = "board_qemu")]
@@ -67,9 +68,11 @@ pub fn rust_main() -> ! {
     clear_bss(); // clear all bss segment to init kernel
     logger::init();
 
-    info!("[kernel] Hello, world!");
+    debug!("[kernel] Hello, world!");
     trap::init();
+    debug!("[kernel] Init trap success!");
     loader::load_apps();
+    debug!("[kernel] Load apps success!");
     task::run_first_task();
     panic!("Unreachable in rust_main!");
 }

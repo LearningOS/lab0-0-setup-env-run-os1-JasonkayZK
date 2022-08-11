@@ -1,3 +1,4 @@
+//! SBI call wrappers
 #![allow(unused)]
 
 use core::arch::asm;
