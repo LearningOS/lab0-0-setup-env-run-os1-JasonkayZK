@@ -7,7 +7,7 @@ use log::info;
 use user_lib::{print, println, yield_};
 
 const WIDTH: usize = 10;
-const HEIGHT: usize = 5;
+const HEIGHT: usize = 25;
 
 #[no_mangle]
 fn main() -> i32 {

@@ -39,6 +39,7 @@ mod lang_items;
 mod sbi;
 mod stack_trace;
 mod logger;
+mod timer;
 
 // boot & load os for qemu
 global_asm!(include_str!("entry.asm"));
@@ -73,6 +74,8 @@ pub fn rust_main() -> ! {
     debug!("[kernel] Init trap success!");
     loader::load_apps();
     debug!("[kernel] Load apps success!");
+    trap::enable_timer_interrupt();
+    timer::set_next_trigger();
     task::run_first_task();
     panic!("Unreachable in rust_main!");
 }
